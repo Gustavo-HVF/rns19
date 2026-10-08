@@ -1,0 +1,70 @@
+# PROJETO EXPRO — cenário com dados FICTÍCIOS (edite à vontade)
+# Coordenadas em metros a partir da origem do canteiro (x = leste, y = norte).
+
+[sistema]
+explosivo_xy = [0, 0]
+terreno = "rocha_dura"            # seleção manual do operador (ESC-04)
+duracao_nivel3_s = 15             # áudio Nível 3 — posicionamento
+duracao_nivel2_s = 30             # áudio Nível 2 — detonação iminente (Nível 1 é contínuo)
+intervalo_entre_avisos_s = 30     # cooldown entre avisos (Ator 3 — temporizador)
+contagem_regressiva_s = 30
+janela_disparo_s = 60             # tempo em que a detonação fica liberada aguardando o disparo
+timeout_sinal_s = 10              # capacete sem enviar posição por mais que isso = "sem sinal"
+bloquear_sem_sinal = true         # fail-safe: capacete sem sinal conta como pessoa na área
+capacetes_cadastrados = []        # capacetes em uso no turno (os que nunca enviarem posição bloqueiam)
+
+[sistema.raios_terreno_m]          # valores fictícios; no uso real vêm do plano de fogo
+solo = 150
+rocha_branda = 200
+rocha_dura = 250
+
+# Usuários fictícios. Em uso real troque "pin" por "pin_sha256" (gere com: python -m expro hash-pin)
+[[usuarios]]
+login = "tecnico"
+nome = "Ana"
+perfil = "tecnico"
+pin = "1234"
+
+[[usuarios]]
+login = "blaster"
+nome = "Carlos"
+perfil = "operario"
+pin = "0000"
+
+[hardware]
+localizacao = "simulado"   # "simulado" | "mqtt"
+audio = ["console"]        # qualquer combinação de "console", "local", "mqtt"
+trava = "simulada"         # "simulada" | "gpio"
+
+[simulacao]
+velocidade_evacuacao_m_s = 8   # acelerada para a demonstração
+
+[[trabalhadores_simulados]]
+id = "CAP-01"
+nome = "João"
+x = 60
+y = 40
+
+[[trabalhadores_simulados]]
+id = "CAP-02"
+nome = "Maria"
+x = -120
+y = 90
+
+[[trabalhadores_simulados]]
+id = "CAP-03"
+nome = "Pedro"
+x = 150
+y = -170
+
+[[trabalhadores_simulados]]
+id = "CAP-04"
+nome = "Lucas"
+x = 320
+y = 210
+
+[[trabalhadores_simulados]]
+id = "CAP-05"
+nome = "Rafaela"
+x = -290
+y = -240

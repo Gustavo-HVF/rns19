@@ -1,0 +1,56 @@
+# PROJETO EXPRO — exemplo de configuração com hardware (Raspberry Pi + broker MQTT)
+# Uso: python -m expro --config config/exemplo_hardware_real.toml
+# Veja docs/EXPANSAO_HARDWARE.md para a montagem.
+
+[sistema]
+explosivo_xy = [0, 0]             # com GPS, coloque a origem_gps no ponto do fogo (abaixo)
+terreno = "rocha_dura"
+duracao_nivel3_s = 15
+duracao_nivel2_s = 30
+intervalo_entre_avisos_s = 30
+contagem_regressiva_s = 30
+janela_disparo_s = 60
+timeout_sinal_s = 10
+bloquear_sem_sinal = true
+capacetes_cadastrados = ["CAP-01", "CAP-02", "CAP-03"]
+
+[sistema.raios_terreno_m]          # preencha com os valores do plano de fogo aprovado
+solo = 150
+rocha_branda = 200
+rocha_dura = 250
+
+[[usuarios]]
+login = "tecnico"
+nome = "Técnico de Segurança"
+perfil = "tecnico"
+pin_sha256 = "troque-pelo-hash-gerado-com-python-m-expro-hash-pin"
+
+[[usuarios]]
+login = "blaster"
+nome = "Blaster"
+perfil = "operario"
+pin_sha256 = "troque-pelo-hash-gerado-com-python-m-expro-hash-pin"
+
+[hardware]
+localizacao = "mqtt"
+audio = ["console", "local", "mqtt"]   # terminal + caixa de som da central + alto-falantes/capacetes
+trava = "gpio"
+
+[hardware.mqtt]
+host = "localhost"                 # Mosquitto rodando no próprio Raspberry Pi
+porta = 1883
+usuario = ""
+senha = ""
+origem_gps = [-16.6869, -49.2648]  # latitude/longitude do ponto do fogo (exemplo fictício)
+topico_posicao = "expro/capacetes/+/posicao"
+topico_alerta = "expro/alerta"
+topico_emergencia = "expro/emergencia"
+
+[hardware.audio_local]
+pasta = "audios"                   # nivel3.wav, nivel2.wav, nivel1.wav (sem eles, usa sirene gerada)
+
+[hardware.gpio]
+pino_rele = 17                     # BCM 17: relé da trava (desenergizado = bloqueado)
+rele_ativo_em_alto = true
+pino_emergencia = 27               # BCM 27: botão de emergência
+emergencia_nf = true               # contato normalmente fechado (fio rompido = emergência)
