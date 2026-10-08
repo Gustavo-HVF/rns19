@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Banner EXPRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Banner 90 x 120 cm. Para outro tamanho, mude @page, html/body e .banner. */
+  @page { size: 90cm 120cm; margin: 0; }
+  :root {
+    --escuro: #1b2430;
+    --amarelo: #ffc20e;
+    --papel: #f5f3ee;
+    --cartao: #ffffff;
+    --tinta: #1f2933;
+    --suave: #56616d;
+    --linha: #ddd8cc;
+    --n3: #1f6fb2;
+    --n2: #e2700a;
+    --n1: #c62828;
+    --verde: #2e7d32;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 90cm; height: 120cm; }
+  body {
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: Inter, "Inter Display", Arial, sans-serif;
+    font-size: 34pt;
+    line-height: 1.3;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  b, strong { font-weight: 800; }
+  .banner { width: 90cm; height: 120cm; display: flex; flex-direction: column; overflow: hidden; }
+  .faixa { height: 1.5cm; flex: none;
+    background: repeating-linear-gradient(-45deg, var(--amarelo) 0 1.5cm, var(--escuro) 1.5cm 3cm); }
+
+  /* Cabeçalho */
+  header { background: var(--escuro); color: #fff; padding: 2.2cm 3cm 2.3cm; display: grid;
+    grid-template-columns: 15.5cm auto 1fr; align-items: center; gap: 2.2cm; flex: none; }
+  .chamada { border-left: .35cm solid var(--amarelo); padding-left: 1.6cm; }
+  .marca { width: 15.5cm; height: 17cm; flex: none; }
+  .instituicao { font-size: 28pt; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--amarelo); }
+  .projeto { font-size: 64pt; font-weight: 800; letter-spacing: .3em; margin-top: .5cm; color: #cfd6dd; }
+  h1 { font-size: 230pt; font-weight: 900; line-height: .86; letter-spacing: -.02em; }
+  .sigla { font-size: 54pt; font-weight: 500; margin-top: .4cm; color: #cfd6dd; }
+  .sigla b { color: var(--amarelo); font-weight: 900; }
+  .lema { font-size: 66pt; font-weight: 900; line-height: 1.08; text-wrap: balance; }
+  .lema em { font-style: normal; color: var(--amarelo); }
+  .sub { font-size: 33pt; color: #b9c2cb; margin-top: .9cm; line-height: 1.28; }
+
+  /* Corpo */
+  main { flex: 1; padding: 2cm 3cm 1.8cm; display: flex; flex-direction: column; justify-content: space-between; }
+  .linha { display: grid; gap: 1.8cm; }
+  .duas { grid-template-columns: 1fr 1fr; }
+  .passos { grid-template-columns: 1.08fr 1fr; }
+  .fim { grid-template-columns: 1fr 1.18fr; }
+  h2 { font-size: 54pt; font-weight: 900; text-transform: uppercase; line-height: 1.05;
+    display: flex; align-items: center; gap: .55cm; margin-bottom: .55cm; }
+  h2 .n { flex: none; width: 1.95cm; height: 1.95cm; border-radius: 50%; background: var(--escuro);
+    color: var(--amarelo); font-size: 40pt; display: grid; place-items: center; }
+  p + p { margin-top: .45cm; }
+  .destaque { background: var(--escuro); color: #fff; border-radius: .5cm; padding: .7cm .9cm;
+    margin-top: .6cm; font-weight: 600; }
+  .destaque b { color: var(--amarelo); }
+
+  /* Como funciona */
+  .fluxo { display: grid; grid-template-columns: 1fr auto 1fr auto 1.05fr; align-items: center; gap: .6cm; }
+  .no { background: var(--cartao); border: .12cm solid var(--linha); border-radius: .55cm; padding: .7cm .7cm .8cm;
+    text-align: center; }
+  .no svg { width: 4.2cm; height: 4.2cm; display: block; margin: 0 auto .3cm; }
+  .no h3 { font-size: 36pt; font-weight: 900; line-height: 1.1; }
+  .no p { font-size: 27pt; color: var(--suave); line-height: 1.22; margin-top: .25cm; }
+  .seta { width: 2.2cm; height: 2cm; }
+  .saidas { display: grid; gap: .5cm; }
+  .saidas .no { display: grid; grid-template-columns: 3.4cm 1fr; align-items: center; text-align: left;
+    gap: .5cm; padding: .5cm .7cm; }
+  .saidas .no svg { width: 3.4cm; height: 3.4cm; margin: 0; }
+  .mapas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2cm; margin-top: 1cm; }
+  .mapa { background: var(--cartao); border-radius: .55cm; padding: .6cm .9cm; display: grid;
+    grid-template-columns: 8cm 1fr; gap: .8cm; align-items: center; border: .12cm solid var(--linha); }
+  .mapa svg { width: 8cm; height: 8cm; }
+  .mapa .quantos { font-size: 32pt; font-weight: 700; }
+  .mapa .veredito { font-size: 44pt; font-weight: 900; line-height: 1.05; margin-top: .25cm; }
+  .bloq .veredito { color: var(--n1); }
+  .livre .veredito { color: var(--verde); }
+
+  /* Passo a passo */
+  ol.etapas { list-style: none; display: grid; gap: .45cm; }
+  ol.etapas li { display: grid; grid-template-columns: 1.7cm 1fr; gap: .5cm; align-items: start; }
+  ol.etapas li .n { width: 1.7cm; height: 1.7cm; border-radius: .35cm; background: var(--amarelo);
+    color: var(--escuro); font-weight: 900; font-size: 34pt; display: grid; place-items: center; }
+
+  /* Níveis */
+  .niveis { display: grid; gap: .55cm; }
+  .nivel { border-radius: .55cm; color: #fff; padding: .6cm .85cm .7cm; }
+  .nivel .topo { display: flex; justify-content: space-between; align-items: baseline; gap: .5cm;
+    font-weight: 900; font-size: 34pt; text-transform: uppercase; }
+  .nivel .topo span { font-size: 28pt; font-weight: 700; opacity: .92; text-transform: none; white-space: nowrap; }
+  .nivel q { display: block; font-size: 31pt; font-style: italic; margin-top: .25cm; line-height: 1.25; }
+  .nivel.n3 { background: var(--n3); }
+  .nivel.n2 { background: var(--n2); }
+  .nivel.n1 { background: var(--n1); }
+  .nota { font-size: 27pt; color: var(--suave); margin-top: .1cm; }
+
+  /* Regras, usos, protótipo */
+  ul.regras { list-style: none; display: grid; gap: .38cm; }
+  ul.regras li { display: grid; grid-template-columns: 1.4cm 1fr; gap: .45cm; align-items: start; font-weight: 600; }
+  ul.regras svg { width: 1.4cm; height: 1.4cm; margin-top: .1cm; }
+  .usos { display: flex; flex-wrap: wrap; gap: .45cm; margin-top: .9cm; }
+  .usos span { background: var(--escuro); color: #fff; border-radius: 1cm; padding: .3cm .8cm; font-size: 29pt;
+    font-weight: 700; }
+  .usos-titulo { font-size: 30pt; font-weight: 900; text-transform: uppercase; margin-top: 1cm; color: var(--suave); }
+  .prototipo { display: grid; grid-template-columns: 1fr 9.2cm; gap: 1cm; align-items: start; }
+  .qr { background: var(--cartao); border: .12cm solid var(--linha); border-radius: .55cm; padding: .6cm;
+    text-align: center; font-size: 23pt; font-weight: 700; line-height: 1.2; }
+  .qr img { width: 7.6cm; height: 7.6cm; display: block; margin: 0 auto .35cm; }
+  .qr small { display: block; font-size: 19pt; font-weight: 500; color: var(--suave); margin-top: .15cm; }
+
+  footer { background: var(--escuro); color: #fff; padding: 1.1cm 3cm; display: flex; justify-content: space-between;
+    align-items: center; gap: 2cm; font-size: 26pt; flex: none; }
+  footer b { color: var(--amarelo); }
+  footer .aviso { color: #b9c2cb; font-size: 22pt; text-align: right; max-width: 34cm; }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="faixa"></div>
+
+  <header>
+    <svg class="marca" viewBox="0 0 155 170" aria-hidden="true">
+      <path d="M77.5 6 L146 30 V82 C146 124 116 152 77.5 164 C39 152 9 124 9 82 V30 Z" fill="none"
+            stroke="#ffc20e" stroke-width="7" stroke-linejoin="round"/>
+      <circle cx="77.5" cy="88" r="52" fill="#c62828" fill-opacity=".22" stroke="#ffc20e" stroke-width="3"
+              stroke-dasharray="7 6"/>
+      <circle cx="77.5" cy="88" r="30" fill="none" stroke="#ffc20e" stroke-opacity=".55" stroke-width="2"
+              stroke-dasharray="4 5"/>
+      <polygon fill="#ffc20e" points="77.5,68 82,80 94,74 88,86 100,92 87,95 92,108 80,100 74,112 72,99 59,103 66,92 55,85 68,82 63,70 74,77"/>
+      <path d="M44 52 a12 12 0 0 1 24 0 z M41 52 h30 v4 h-30 z" fill="#ffffff"/>
+      <path d="M95 46 a10 10 0 0 1 20 0 z M93 46 h24 v3.5 h-24 z" fill="#ffffff"/>
+    </svg>
+    <div>
+      <div class="instituicao">CEPI Garavelo Park · ER Dynamics Group</div>
+      <div class="projeto">PROJETO</div>
+      <h1>EXPRO</h1>
+      <div class="sigla"><b>EX</b>plosion <b>PRO</b>tection</div>
+    </div>
+    <div class="chamada">
+      <div class="lema">Com alguém no raio de risco, <em>a explosão não acontece.</em></div>
+      <div class="sub">Sistema digital de bloqueio e alerta para detonações em mineração, pedreiras e obras, de acordo com a NR-19.</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="linha duas">
+      <section>
+        <h2><span class="n">1</span>O problema</h2>
+        <p>Explosivos são usados para desmontar rocha em minas, pedreiras e grandes obras. O momento mais
+          perigoso é a detonação: quem estiver dentro do <b>raio de risco</b> pode ser atingido por fragmentos
+          de rocha e pela onda de choque.</p>
+        <p>Hoje, confirmar que a área está vazia depende de olhar, contar e chamar pelo rádio. Basta uma
+          falha humana para alguém ficar para trás.</p>
+      </section>
+      <section>
+        <h2><span class="n">2</span>A ideia: um EPC digital</h2>
+        <p>O EXPRO é um <b>Equipamento de Proteção Coletiva digital</b>. Um localizador no capacete informa
+          onde está cada trabalhador; o sistema conta quem está no raio e <b>trava a detonação</b> enquanto
+          houver ao menos uma pessoa ali.</p>
+        <div class="destaque">Um EPI protege uma pessoa. O EXPRO protege <b>a equipe inteira ao mesmo tempo</b>.</div>
+      </section>
+    </div>
+
+    <section>
+      <h2><span class="n">3</span>Como funciona</h2>
+      <div class="fluxo">
+        <div class="no">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M16 66 A34 34 0 0 1 84 66 Z" fill="#ffc20e" stroke="#1b2430" stroke-width="4"/>
+            <rect x="8" y="64" width="84" height="11" rx="5" fill="#ffc20e" stroke="#1b2430" stroke-width="4"/>
+            <path d="M50 33 V64" stroke="#1b2430" stroke-width="4"/>
+            <circle cx="72" cy="22" r="5" fill="#1b2430"/>
+            <path d="M80 12 a14 14 0 0 1 4 14 M86 5 a24 24 0 0 1 7 24" fill="none" stroke="#1b2430" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <h3>Capacete com localizador</h3>
+          <p>envia a posição de cada trabalhador a cada poucos segundos</p>
+        </div>
+        <svg class="seta" viewBox="0 0 44 40" aria-hidden="true"><path d="M2 20 H32 M22 8 L36 20 L22 32" fill="none" stroke="#1b2430" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="no">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect x="8" y="12" width="84" height="58" rx="7" fill="#1b2430"/>
+            <circle cx="50" cy="41" r="21" fill="none" stroke="#ffc20e" stroke-width="3" stroke-dasharray="5 4"/>
+            <circle cx="50" cy="41" r="4" fill="#ffc20e"/>
+            <circle cx="40" cy="33" r="3.5" fill="#ef5350"/>
+            <circle cx="77" cy="56" r="3.5" fill="#66bb6a"/>
+            <path d="M38 70 L34 86 H66 L62 70" fill="#1b2430"/>
+            <rect x="26" y="84" width="48" height="6" rx="3" fill="#1b2430"/>
+          </svg>
+          <h3>Central EXPRO</h3>
+          <p>calcula o raio de risco e conta quem está dentro dele</p>
+        </div>
+        <svg class="seta" viewBox="0 0 44 40" aria-hidden="true"><path d="M2 20 H32 M22 8 L36 20 L22 32" fill="none" stroke="#1b2430" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="saidas">
+          <div class="no">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M30 46 V32 a20 20 0 0 1 40 0 V46" fill="none" stroke="#1b2430" stroke-width="8"/>
+              <rect x="18" y="44" width="64" height="46" rx="8" fill="#c62828"/>
+              <circle cx="50" cy="63" r="6" fill="#fff"/><rect x="47" y="64" width="6" height="14" rx="3" fill="#fff"/>
+            </svg>
+            <div><h3>Trava da detonação</h3><p>bloqueada enquanto houver alguém no raio</p></div>
+          </div>
+          <div class="no">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M12 38 H32 L56 18 V82 L32 62 H12 Z" fill="#e2700a" stroke="#1b2430" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M66 36 a18 18 0 0 1 0 28 M75 26 a32 32 0 0 1 0 48" fill="none" stroke="#1b2430" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div><h3>Alertas sonoros</h3><p>alto-falantes, rádios e o próprio capacete avisam todos</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapas">
+        <div class="mapa bloq">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="96" fill="none" stroke="#ccc4b3" stroke-width="2" stroke-dasharray="4 6"/>
+            <circle cx="100" cy="100" r="70" fill="#c62828" fill-opacity=".14" stroke="#c62828" stroke-width="4"/>
+            <polygon fill="#ff8f00" stroke="#4e342e" stroke-width="2" points="100,86 104,95 114,92 108,100 114,108 104,105 100,114 96,105 86,108 92,100 86,92 96,95"/>
+            <circle cx="68" cy="72" r="9" fill="#c62828" stroke="#fff" stroke-width="3"/>
+            <circle cx="132" cy="134" r="9" fill="#c62828" stroke="#fff" stroke-width="3"/>
+            <circle cx="182" cy="40" r="9" fill="#2e7d32" stroke="#fff" stroke-width="3"/>
+            <circle cx="22" cy="168" r="9" fill="#2e7d32" stroke="#fff" stroke-width="3"/>
+          </svg>
+          <div>
+            <div class="quantos">2 pessoas dentro do raio</div>
+            <div class="veredito">DETONAÇÃO BLOQUEADA</div>
+          </div>
+        </div>
+        <div class="mapa livre">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="96" fill="none" stroke="#ccc4b3" stroke-width="2" stroke-dasharray="4 6"/>
+            <circle cx="100" cy="100" r="70" fill="#2e7d32" fill-opacity=".14" stroke="#2e7d32" stroke-width="4"/>
+            <polygon fill="#ff8f00" stroke="#4e342e" stroke-width="2" points="100,86 104,95 114,92 108,100 114,108 104,105 100,114 96,105 86,108 92,100 86,92 96,95"/>
+            <circle cx="182" cy="40" r="9" fill="#2e7d32" stroke="#fff" stroke-width="3"/>
+            <circle cx="22" cy="168" r="9" fill="#2e7d32" stroke="#fff" stroke-width="3"/>
+            <circle cx="20" cy="46" r="9" fill="#2e7d32" stroke="#fff" stroke-width="3"/>
+            <circle cx="178" cy="164" r="9" fill="#2e7d32" stroke="#fff" stroke-width="3"/>
+          </svg>
+          <div>
+            <div class="quantos">Ninguém dentro do raio</div>
+            <div class="veredito">DETONAÇÃO LIBERADA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="linha passos">
+      <section>
+        <h2><span class="n">4</span>Passo a passo</h2>
+        <ol class="etapas">
+          <li><span class="n">1</span><div>Explosivos posicionados: o blaster confere a área e aciona o <b>Nível 3</b>. Todos devem sair.</div></li>
+          <li><span class="n">2</span><div>A central mostra em tempo real quantas pessoas ainda estão no raio.</div></li>
+          <li><span class="n">3</span><div>Com o raio vazio, só o <b>Técnico de Segurança</b>, com senha, autoriza: <b>Nível 2</b> e contagem regressiva.</div></li>
+          <li><span class="n">4</span><div>Alguém entrou no raio durante a contagem? Ela é <b>cancelada</b> na hora.</div></li>
+          <li><span class="n">5</span><div>Contagem concluída com a área livre: a detonação é liberada.</div></li>
+          <li><span class="n">6</span><div>Depois da explosão, a área só reabre após <b>vistoria presencial</b> do Técnico.</div></li>
+        </ol>
+      </section>
+      <section>
+        <h2><span class="n">5</span>3 níveis de alerta</h2>
+        <div class="niveis">
+          <div class="nivel n3">
+            <div class="topo">Nível 3 · Posicionamento <span>15 s</span></div>
+            <q>Posicionamento de explosivos concluído. Favor evacuar a área de risco.</q>
+          </div>
+          <div class="nivel n2">
+            <div class="topo">Nível 2 · Detonação iminente <span>30 s</span></div>
+            <q>Detonação iminente! Evacuação imediata obrigatória.</q>
+          </div>
+          <div class="nivel n1">
+            <div class="topo">Nível 1 · Emergência <span>contínuo</span></div>
+            <q>Alerta de emergência! Explosivos instáveis na área.</q>
+          </div>
+          <p class="nota">O Nível 1 sai pelo <b>botão de emergência</b> e interrompe tudo na hora. Entre os outros avisos há um intervalo de 30 s.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="linha fim">
+      <section>
+        <h2><span class="n">6</span>Regras que nunca falham</h2>
+        <ul class="regras">
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#1b2430"/><path d="M11 21 l6 6 l12 -14" fill="none" stroke="#ffc20e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>1 pessoa no raio = detonação bloqueada.</li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#1b2430"/><path d="M11 21 l6 6 l12 -14" fill="none" stroke="#ffc20e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Só o Técnico de Segurança libera a detonação.</li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#1b2430"/><path d="M11 21 l6 6 l12 -14" fill="none" stroke="#ffc20e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>O botão de emergência interrompe qualquer contagem.</li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#1b2430"/><path d="M11 21 l6 6 l12 -14" fill="none" stroke="#ffc20e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Capacete sem sinal conta como pessoa na área.</li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#1b2430"/><path d="M11 21 l6 6 l12 -14" fill="none" stroke="#ffc20e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Reentrada só depois da vistoria presencial.</li>
+        </ul>
+        <div class="usos-titulo">Onde pode ser usado</div>
+        <div class="usos"><span>Mineração</span><span>Pedreiras e escavações</span><span>Engenharia civil pesada</span></div>
+      </section>
+      <section>
+        <h2><span class="n">7</span>O protótipo</h2>
+        <div class="prototipo">
+          <div>
+            <p>Nesta demonstração, os capacetes são <b>simulados com dados fictícios</b>.</p>
+            <p>O software, em Python e de código aberto, já está preparado para receber o hardware real:
+              localizador <b>GPS</b> (céu aberto) ou <b>UWB</b> (subterrâneo), comunicação <b>LoRa ou Wi-Fi</b>,
+              central <b>Raspberry Pi</b> e os sistemas de <b>som e rádio</b> que o canteiro já usa.</p>
+          </div>
+          <div class="qr">
+            <img src="qr_github.svg" alt="QR code para o repositório no GitHub">
+            Código e simulação no GitHub
+            <small>github.com/<br>Gustavo-HVF/rns19</small>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div><b>ER Dynamics Group</b> · CEPI Garavelo Park<br>Erik Santos Figueredo · Robson Thauan Pereira Braz Santos</div>
+    <div class="aviso">Protótipo educacional baseado na NR-19 (Segurança com Explosivos). Não substitui o plano de fogo nem o blaster habilitado.</div>
+  </footer>
+  <div class="faixa"></div>
+</div>
+</body>
+</html>

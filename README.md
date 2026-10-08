@@ -89,6 +89,13 @@ O núcleo não depende de hardware. O notebook do Colab é gerado a partir dos m
 Além do DERF, por segurança: capacete **sem sinal** conta como pessoa na área (configurável), a trava
 começa sempre **bloqueada**, e falhas de sensor ou de áudio são registradas sem derrubar o bloqueio.
 
+## Banner
+
+[`banner/EXPRO_banner_90x120cm.pdf`](banner/EXPRO_banner_90x120cm.pdf) está pronto para impressão
+(90 × 120 cm). Para editar textos, nomes ou cores, altere [`banner/banner.html`](banner/banner.html) e gere
+o PDF de novo pelo Google Chrome: **Imprimir → Salvar como PDF**, com **Gráficos de plano de fundo** ativado
+(o tamanho da página já está definido no arquivo). O QR code aponta para este repositório.
+
 ## Equipe
 
 Analistas do DERF: Erik Santos Figueredo e Robson Thauan Pereira Braz Santos — ER Dynamics Group.
